@@ -103,17 +103,20 @@ chatbox = {
 			questionMarker += '<p>' + content + '</p>';
 			questionMarker += '</div>';
 			$(questionMarker).appendTo('.question-container .question-markers');
+			$('.js-page-content').addClass('has-chatbox');
 		}
 	},
 	mouse_enter : function( element ){
 		data_selection = $(element).attr('data-selection');
-		$('.selected-text[data-selection='+ data_selection +']').css('background-color', '#f00');
-		$(element).css('background', '#f00');
+		var color = $('.selected-text[data-selection='+ data_selection +']').css('background');
+		$('.selected-text[data-selection='+ data_selection +']').css('background-color', color);
+		$(element).css('background', color);
 	},
 	mouse_leave : function( element ){
 		data_selection = $(element).attr('data-selection');
  		$(element).css('background', 'none');
- 		$('.selected-text[data-selection='+ data_selection +']').css('background-color', '#ccc');
+ 		var color = $('.selected-text[data-selection='+ data_selection +']').css('background');
+ 		$('.selected-text[data-selection='+ data_selection +']').css('background-color', color);
 	}
 }
 

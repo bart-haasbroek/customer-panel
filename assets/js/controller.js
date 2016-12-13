@@ -136,7 +136,7 @@ $(document).ready(function(){
 		textarea = $('.reaction-form textarea');
 		reaction_text = textarea.val();
 		date_selection = $(this).closest('.reaction-form').attr('data-reaction');
-		$('.question-marker').append( '<p>'+ reaction_text +'</p>' );
+		$('.question-marker[data-selection="'+ date_selection +'"]').append( '<p>'+ reaction_text +'</p>' );
 		reaction_text = textarea.val('');
 		$('.reaction-form').removeClass('active'); 
 	});
@@ -148,11 +148,13 @@ $(document).ready(function(){
 	// When you hovered over the selected text, highlight the right comment box
 	$(".content").on( 'mouseenter', '.selected-text', function () {
 		dataSelection = $(this).attr('data-selection');
-		$('.question-marker[data-selection='+ dataSelection +']').css('background-color', '#f00');
-		$(this).css('background', '#f00');
+		var color = $(this).css('background-color');
+		$('.question-marker[data-selection='+ dataSelection +']').css('background-color', color);
+		$(this).css('background', color);
 
 	}).on( 'mouseleave', '.selected-text', function () {
-		$(this).css('background', '#ccc');
+		var color = $(this).css('background-color');
+		$(this).css('background', color);
 		$('.question-marker').css('background-color', 'transparent');
 	});
 
